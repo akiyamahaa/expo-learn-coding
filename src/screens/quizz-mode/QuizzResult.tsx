@@ -1,154 +1,225 @@
-import { StyleSheet, TouchableOpacity } from 'react-native';
-import React from 'react';
-import { Box, Image, Text, VStack, View } from '@gluestack-ui/themed';
-import { useNavigation, useRoute } from '@react-navigation/native';
-import { quizzData } from '../../db/quizz';
+// src/screens/QuizzResult.tsx
+import React, { useLayoutEffect, useState } from "react";
+import { StyleSheet, Dimensions, TouchableOpacity } from "react-native";
+import { Box, Text, VStack, HStack } from "@gluestack-ui/themed";
+import { useNavigation, useRoute } from "@react-navigation/native";
+import { MotiView } from "moti";
+import LottieView from "lottie-react-native";
+import { LinearGradient } from "expo-linear-gradient";
+import { FontAwesome } from "@expo/vector-icons";
 
-const show: { [key: string]: string } = {
-  easy: 'Easy',
-  medium: 'Medium',
-  hard: 'Hard',
-};
+const { width } = Dimensions.get("screen");
+const BADGE_SIZE = width * 0.4;
+const STAR_SIZE = 32;
 
 enum EResultType {
   GOOD,
   BAD,
 }
 
-const RETURN_RESULT = {
+const RETURN_CFG = {
   [EResultType.GOOD]: {
-    title: 'Xin chúc mừng!',
-    description: 'Bạn đã trả lời đúng',
-    color: '#16A34A',
-    logo: require('../../assets/good_logo.png'),
+    title: "Bạn thật tuyệt vời! 🎉",
+    subtitle: "Bạn đã hoàn thành xuất sắc!",
+    gradient: ["#FFD54F", "#FFB300"],
+    animation: require("../../assets/animations/trophy.json"),
+    starColor: "#FFC107",
+    messages: [
+      "Tuyệt vời, bạn thật siêu! 🚀",
+      "Xuất sắc! Tiếp tục phát huy nhé! 🌟",
+      "Bạn làm rất tốt, giữ vững phong độ! 👍",
+    ],
   },
   [EResultType.BAD]: {
-    title: 'Rất tiếc!',
-    description: 'Bạn không trả lời đúng câu nào',
-    color: '#EF4444',
-    logo: require('../../assets/bad_logo.png'),
+    title: "Ôi không! 😢",
+    subtitle: "Bạn hãy thử lại lần nữa nhé",
+    gradient: ["#EF9A9A", "#E57373"],
+    animation: require("../../assets/animations/sad.json"),
+    starColor: "#B0BEC5",
+    messages: [
+      "Đừng nản lòng, lần sau cố gắng hơn nhé! 💪",
+      "Bạn đã cố gắng rất tốt, hãy luyện tập thêm! 📚",
+      "Mỗi thất bại là một bước tiến tới thành công! 🌱",
+    ],
   },
 };
 
-const QuizzResult = () => {
-  const route = useRoute<any>();
-  const { point, length } = route.params;
+const LEVEL_LABEL: Record<string, string> = {
+  easy: "Dễ",
+  medium: "Trung bình",
+  hard: "Khó",
+};
+
+export default function QuizzResult() {
+  const { score, total, level } = useRoute<any>().params;
   const navigation = useNavigation<any>();
-  let result = point > length / 2 ? EResultType.GOOD : EResultType.BAD;
+  const type = score / total >= 0.5 ? EResultType.GOOD : EResultType.BAD;
+  const cfg = RETURN_CFG[type];
+
+  // Random lời khích lệ
+  const [encourage] = useState(() => {
+    const arr = cfg.messages;
+    return arr[Math.floor(Math.random() * arr.length)];
+  });
+
+  useLayoutEffect(() => {
+    navigation.setOptions({ headerShown: false });
+  }, []);
+
+  const starCount = Math.round((score / total) * 5);
 
   return (
-    <VStack
-      flex={1}
-      bg='$white'
-      justifyContent='center'
-      alignItems='center'
-      px={'$12'}
-      gap={'$3'}
+    <LinearGradient
+      colors={cfg.gradient}
+      start={[0, 0]}
+      end={[1, 1]}
+      style={styles.container}
     >
-      <Image source={RETURN_RESULT[result].logo} alt='logo' />
-      <VStack gap={'$1'}>
-        <Text
-          textAlign='center'
-          fontWeight='700'
-          fontSize={'$3xl'}
-          color='$coolGray800'
+      {/* Nền animation */}
+      <LottieView
+        source={cfg.animation}
+        autoPlay
+        loop={type === EResultType.BAD}
+        style={StyleSheet.absoluteFill}
+      />
+
+      <VStack flex={1} justifyContent="center" alignItems="center" px="$4">
+        {/* Badge */}
+        <MotiView
+          from={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{ type: "spring", stiffness: 200, damping: 10 }}
+          style={styles.badgeContainer}
         >
-          {RETURN_RESULT[result].title}
+          <Box
+            width={BADGE_SIZE}
+            height={BADGE_SIZE}
+            rounded="$full"
+            bg="rgba(255,255,255,0.3)"
+            justifyContent="center"
+            alignItems="center"
+          >
+            <LottieView
+              source={cfg.animation}
+              autoPlay
+              loop={false}
+              style={{ width: BADGE_SIZE * 0.8, height: BADGE_SIZE * 0.8 }}
+            />
+          </Box>
+        </MotiView>
+
+        {/* Tiêu đề */}
+        <Text
+          fontSize="$3xl"
+          fontWeight="$bold"
+          color="#fff"
+          textAlign="center"
+          mt="$4"
+        >
+          {cfg.title}
         </Text>
-        <Text textAlign='center' fontSize={'$md'} color='$coolGray800'>
-          {RETURN_RESULT[result].description}
-        </Text>
-      </VStack>
-      <Text
-        textAlign='center'
-        fontWeight='700'
-        fontSize='$3xl'
-        color={RETURN_RESULT[result].color}
-      >
-        {route.params.point}/{route.params.length}
-      </Text>
-      <TouchableOpacity onPress={() => navigation.navigate('Quizz')}>
-        <Box bgColor='#3758F9' py={'$2.5'} px={'$8'} rounded={'$xl'}>
-          <Text color='$white'>Tiếp tục học</Text>
+        {/* Hiển thị level */}
+        <Box bg="rgba(255,255,255,0.3)" px="$4" py="$1" rounded="$full" mt="$2">
+          <Text fontSize="$md" fontWeight="$semibold" color="#fff">
+            Mức độ: {LEVEL_LABEL[level] || level}
+          </Text>
         </Box>
-      </TouchableOpacity>
-      {/*
-      <Box>
-        <View style={styles.box__score}>
-          <View style={[styles.ques, styles.ques__total]}>
-            <Text style={styles.ques__num}>{route.params.length}</Text>
-            <Text>question</Text>
-          </View>
-          <View style={[styles.ques, styles.ques__true]}>
-            <Text style={[styles.ques__num, styles.text__white]}>
-              {route.params.point}
-            </Text>
-            <Text style={styles.text__white}>true</Text>
-          </View>
-          <View style={[styles.ques, styles.ques__false]}>
-            <Text style={[styles.ques__num, styles.text__white]}>
-              {route.params.length - route.params.point}
-            </Text>
-            <Text style={styles.text__white}>false</Text>
-          </View>
-        </View>
+        {/* Subtitle */}
+        <Text fontSize="$md" color="#fff" textAlign="center" mb="$4" mt="$2">
+          {cfg.subtitle}
+        </Text>
 
-      </Box> */}
-    </VStack>
+        {/* Lời động viên */}
+        <Text
+          fontSize="$lg"
+          fontWeight="$semibold"
+          color="#fff"
+          textAlign="center"
+          mb="$6"
+        >
+          {encourage}
+        </Text>
+
+        {/* Điểm số */}
+        <MotiView
+          from={{ scale: 0.8 }}
+          animate={{ scale: [1, 1.1, 1] }}
+          transition={{
+            loop: true,
+            type: "timing",
+            duration: 800,
+            delay: 300,
+          }}
+        >
+          <Text
+            fontSize="$6xl"
+            fontWeight="$black"
+            color="#fff"
+            textAlign="center"
+          >
+            {score}/{total}
+          </Text>
+        </MotiView>
+
+        {/* Sao đánh giá */}
+        <HStack mt="$4">
+          {[...Array(5)].map((_, i) => (
+            <FontAwesome
+              key={i}
+              name="star"
+              size={STAR_SIZE}
+              color={i < starCount ? cfg.starColor : "rgba(255,255,255,0.4)"}
+              style={{ marginHorizontal: 4 }}
+            />
+          ))}
+        </HStack>
+      </VStack>
+
+      {/* Buttons */}
+      <VStack mb="$8" px="$8" space="xl">
+        <TouchableOpacity onPress={() => navigation.goBack()}>
+          <Box
+            bg="$white"
+            py="$3"
+            rounded="$full"
+            alignItems="center"
+            style={styles.buttonShadow}
+          >
+            <Text fontSize="$lg" fontWeight="$semibold" color={cfg.gradient[0]}>
+              Làm lại Quiz
+            </Text>
+          </Box>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.popToTop()}>
+          <Box
+            bg="$white"
+            py="$3"
+            rounded="$full"
+            alignItems="center"
+            style={styles.buttonShadow}
+          >
+            <Text fontSize="$lg" fontWeight="$semibold" color={cfg.gradient[0]}>
+              Về Trang Chủ
+            </Text>
+          </Box>
+        </TouchableOpacity>
+      </VStack>
+    </LinearGradient>
   );
-};
-
-export default QuizzResult;
+}
 
 const styles = StyleSheet.create({
-  text__main: {
-    fontSize: 30,
-    fontWeight: 'bold',
-    marginTop: 50,
+  container: { flex: 1 },
+  badgeContainer: {
+    shadowColor: "#000",
+    shadowOpacity: 0.3,
+    shadowRadius: 10,
+    elevation: 8,
   },
-  text__level: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    marginTop: 5,
-    marginBottom: 20,
-  },
-  text__comment: {
-    fontSize: 40,
-    fontWeight: 'bold',
-    color: '#3D7944',
-  },
-  text__score: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: '#3D7944',
-    marginTop: 10,
-  },
-  box__score: {
-    flexDirection: 'row',
-    marginTop: 20,
-  },
-  ques: {
-    width: 100,
-    height: 100,
-    borderRadius: 50,
-    justifyContent: 'center',
-    alignItems: 'center',
-    margin: 5,
-  },
-  ques__total: {
-    backgroundColor: '#F7D46B',
-  },
-  ques__true: {
-    backgroundColor: '#3D7944',
-  },
-  ques__false: {
-    backgroundColor: '#D00809',
-  },
-  ques__num: {
-    fontSize: 35,
-    fontWeight: 'bold',
-  },
-  text__white: {
-    color: '#FFFFFF',
+  buttonShadow: {
+    shadowColor: "#000",
+    shadowOpacity: 0.2,
+    shadowRadius: 8,
+    elevation: 5,
   },
 });

@@ -1,14 +1,14 @@
-import { StyleSheet } from 'react-native';
-import React from 'react';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Home from '../screens/home/Home';
-import { Text, VStack } from '@gluestack-ui/themed';
-import { BottomTabsParams } from './config';
-import Ionicons from '@expo/vector-icons/Ionicons';
-import Quizz from '../screens/quizz-mode/Quizz';
-import Practice from '../screens/practice/Practice';
-import Puzzle from '../screens/puzzle/Puzzle';
-import { UseTokenColor } from '../hook/UseTokenColor';
+import { StyleSheet } from "react-native";
+import React from "react";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import Home from "../screens/home/Home";
+import { Text, VStack } from "@gluestack-ui/themed";
+import { BottomTabsParams } from "./config";
+import Ionicons from "@expo/vector-icons/Ionicons";
+import Quizz from "../screens/quizz-mode/Quizz";
+import Practice from "../screens/practice/Practice";
+import Puzzle from "../screens/puzzle/Puzzle";
+import { UseTokenColor } from "../hook/UseTokenColor";
 
 const Tab = createBottomTabNavigator<BottomTabsParams>();
 
@@ -20,7 +20,7 @@ interface ITabIcon {
 const TabIcon = ({ focused, name, title }: ITabIcon) => {
   const colors = UseTokenColor();
   return (
-    <VStack alignItems={'center'}>
+    <VStack alignItems={"center"}>
       <Ionicons
         name={name}
         size={20}
@@ -28,7 +28,7 @@ const TabIcon = ({ focused, name, title }: ITabIcon) => {
       />
       <Text
         fontSize={10}
-        fontWeight={'$medium'}
+        fontWeight={"$medium"}
         color={focused ? colors.primary600 : colors.warmGray600}
       >
         {title}
@@ -48,23 +48,23 @@ interface ITabData {
 export const TabData: ITabData[] = [
   {
     id: 1,
-    tabName: 'Home',
-    title: 'Trang chủ',
-    iconName: 'home',
+    tabName: "Home",
+    title: "Trang chủ",
+    iconName: "home",
     component: Home,
   },
   {
     id: 2,
-    tabName: 'Quizz',
-    title: 'Trắc nghiệm',
-    iconName: 'apps',
+    tabName: "Quizz",
+    title: "Trắc nghiệm",
+    iconName: "apps",
     component: Quizz,
   },
   {
     id: 3,
-    tabName: 'Practice',
-    title: 'Tự luận',
-    iconName: 'information-circle-sharp',
+    tabName: "Practice",
+    title: "Tự luận",
+    iconName: "information-circle-sharp",
     component: Practice,
   },
   // {
@@ -99,7 +99,7 @@ const TabNavigation = () => {
                 title={tab.title}
               />
             ),
-            headerShown: true,
+            headerShown: false,
             title: tab.title,
             headerStyle: {
               backgroundColor: colors.white,

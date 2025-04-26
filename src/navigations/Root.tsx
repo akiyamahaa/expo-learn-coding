@@ -13,6 +13,8 @@ import PracticeDetail from "../screens/practice/PracticeDetail";
 import { UseTokenColor } from "../hook/UseTokenColor";
 import PuzzleScreen from "../screens/puzzle/PuzzleScreen";
 import DetailCommon from "../screens/detail/DetailCommon";
+import Onboarding from "../screens/Onboard";
+import Learning from "../screens/detail/Learning";
 
 const Stack = createNativeStackNavigator<RootStackParams>();
 
@@ -28,9 +30,11 @@ const Root = () => {
             headerShown: false,
           }}
         >
+          <Stack.Screen name="OnBoard" component={Onboarding} />
+
           <Stack.Screen name="TabNavigation" component={TabNavigation} />
           <Stack.Screen name="Detail" component={Detail} />
-
+          <Stack.Screen name="Learning" component={Learning} />
           <Stack.Screen name="DetailCommon" component={DetailCommon} />
           <Stack.Screen
             name="QuizzResult"

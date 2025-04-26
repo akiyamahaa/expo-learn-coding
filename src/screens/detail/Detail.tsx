@@ -105,6 +105,9 @@ export default function Detail() {
         <Pressable
           onPress={() => {
             /* đưa sang màn học */
+            nav.navigate("Learning", {
+              videoUrl: lesson.videoUrl,
+            });
           }}
           style={({ pressed }) => [
             styles.startButton,
