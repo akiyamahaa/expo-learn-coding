@@ -122,7 +122,7 @@ export default function Practice() {
         showsVerticalScrollIndicator={false}
       >
         {excercises.map((item, idx) => (
-          <Box mt={"$4"}>
+          <Box mt={"$4"} key={`item-${idx}`}>
             <PracticeCard key={idx} {...item} index={idx} />
           </Box>
         ))}
