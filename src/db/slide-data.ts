@@ -8,29 +8,33 @@ export const basic: IData[] = [
     image: require("../assets/tech1.png"),
     title: "Lesson 1: Introduction to Web Development",
     description:
-      "In this lesson, students will be introduced to the fundamentals of web development. We'll explore what web development is, the different roles involved (such as front-end, back-end, and full-stack development), and the technologies that power modern websites. Learners will gain an overview of how websites work, the structure of the web (clients, servers, browsers), and the basic tools used in web development. This lesson lays the groundwork for understanding how web pages are created and delivered across the internet.",
+      "Khám phá tổng quan về lập trình web, các vai trò front-end, back-end và full-stack. Hiểu cách trang web hoạt động qua mô hình client-server và làm quen với công cụ phát triển cơ bản.",
     videoUrl: "https://youtu.be/GHUe4m9s6Zk?si=gR_K4sMPU4b3bkGo",
     content: [
-      "Learn what web development is, its roles and real-world applications",
-      "Understand the difference between front-end and back-end development",
-      "Get familiar with the three core languages: HTML, CSS, and JavaScript",
-      "Understand how websites work through the client-server model",
-      "Choose and use popular development tools suitable for beginners",
+      "Explore the history and impact of web development on technology and society",
+      "Differentiate between front-end, back-end, and full-stack roles",
+      "Get familiar with the three building blocks of the web: HTML, CSS, and JavaScript",
+      "Understand how the internet works through the client-server model",
+      "Set up beginner-friendly tools like VS Code, browser dev tools, and GitHub",
+      "Discuss career pathways and future opportunities in web development",
     ],
   },
   {
     id: 2,
     image: require("../assets/tech2.png"),
-    title: "Lesson 2: Basic HTML - Advanced HTML ",
+    title: "Lesson 2: Basic HTML - Advanced HTML",
     description:
-      "Basic HTML introduces you to the fundamental building blocks of web pages. You’ll learn to create simple, structured documents using essential tags like headings, paragraphs, links, images, and lists. This foundation helps you understand how browsers interpret HTML and display content.",
-    videoUrl: "",
+      "Làm quen với HTML – ngôn ngữ xây dựng khung sườn website. Học cách tạo văn bản, liên kết, hình ảnh, biểu mẫu và dùng thẻ semantic để tăng tính rõ ràng, dễ tiếp cận.",
+    videoUrl: "https://youtu.be/HD13eq_Pmp8?si=GNgYeMz9McPrD5I_",
     content: [
-      "Document structure with <html>, <head>, and <body>",
-      "Text formatting using headings (<h1> to <h6>) and paragraphs (<p>)",
-      "Adding links with <a> and images with <img>",
-      "Creating ordered and unordered lists (<ol>, <ul>, <li>)",
-      "Basic use of attributes like href and alt",
+      "Document structure: <!DOCTYPE>, <html>, <head>, <body>",
+      "Working with headings, paragraphs, links, and images",
+      "Building ordered and unordered lists for structured content",
+      "Semantic tags: <header>, <nav>, <article>, <section>, <footer>",
+      "Embedding media: <audio>, <video>, and <iframe>",
+      "Forms: <form>, <input>, <select>, <textarea>, <button>",
+      "Attributes for functionality and accessibility: href, alt, aria-label",
+      "Best practices for clean, semantic, and accessible HTML",
     ],
   },
   {
@@ -38,16 +42,19 @@ export const basic: IData[] = [
     image: require("../assets/tech3.png"),
     title: "Lesson 3: Basic CSS - Advanced CSS",
     description:
-      "Basic CSS focuses on the essentials of styling web pages. You’ll learn how to apply colors, fonts, spacing, and simple layouts to HTML elements, helping you make your pages visually appealing and easier to read.",
-    videoUrl: "",
+      "Tìm hiểu cách dùng CSS để tạo phong cách cho trang web: màu sắc, font chữ, bố cục. Tiến tới kỹ thuật nâng cao như box model, grid, animation để tạo giao diện chuyên nghiệp.",
+    videoUrl: "https://youtu.be/wRNinF7YQqQ?si=LCkbNdv2lJZFhsH7",
     content: [
-      "CSS syntax: selectors, properties, and values",
-      "Applying styles with inline, internal, and external CSS",
-      "Text styling: color, font-family, font-size, font-weight, and text alignment",
+      "CSS syntax and structure: selectors, properties, and values",
+      "Inline, internal, and external CSS approaches",
+      "Typography styling: colors, fonts, spacing, and alignment",
       "The box model: margin, border, padding, and content",
-      "Background colors and images",
-      "Basic layout techniques using display and positioning",
-      "Using classes and IDs to target elements",
+      "Positioning and display: inline, block, absolute, relative, fixed",
+      "Backgrounds, gradients, and images",
+      "Working with pseudo-classes and pseudo-elements (:hover, :before, :after)",
+      "CSS transitions, transformations, and simple animations",
+      "CSS Grid basics for advanced layouts",
+      "Organizing and structuring reusable styles",
     ],
   },
   {
@@ -55,18 +62,18 @@ export const basic: IData[] = [
     image: require("../assets/tech4.png"),
     title: "Lesson 4 : Flexbox & Responsive Design",
     description:
-      "In this lesson, you will learn how to build flexible, adaptable layouts using CSS Flexbox and create websites that look great on any device through responsive design techniques.",
-    videoUrl: "",
+      "Học cách tạo layout linh hoạt bằng Flexbox và tối ưu giao diện cho mọi thiết bị với responsive design. Áp dụng media queries và mobile-first để xây dựng website hiện đại.",
+    videoUrl: "https://youtu.be/phWxA89Dy94?si=F-BrUJAhNMh8eKki",
     content: [
-      "Understanding the CSS Flexbox model: containers and items",
-      "Flexbox properties for containers: display: flex;, flex-direction, justify-content, align-items, flex-wrap",
-      "Flexbox properties for items: flex-grow, flex-shrink, flex-basis, order, and align-self",
-      "Creating horizontal and vertical layouts with ease",
-      "Building flexible navigation bars, card layouts, and grids",
-      "Introduction to responsive design principles",
-      "Using media queries to apply different styles based on screen size",
-      "Mobile-first design approach for better performance and usability",
-      "Practical examples of responsive Flexbox layouts",
+      "Introduction to Flexbox: containers and items",
+      "Flexbox container properties: display: flex;, flex-direction, justify-content, align-items, flex-wrap",
+      "Flexbox item properties: flex-grow, flex-shrink, flex-basis, order, align-self",
+      "Creating common layouts: navbars, cards, and grids",
+      "Responsive design principles and why they matter",
+      "Using relative units (% , em, rem, vw, vh) for fluid design",
+      "Applying media queries for multiple screen sizes",
+      "Mobile-first design: benefits and implementation",
+      "Practical case studies: building a responsive landing page",
     ],
   },
   {
@@ -74,8 +81,16 @@ export const basic: IData[] = [
     image: require("../assets/tech5.png"),
     title: "Lesson 5: Overall Summary: Web Development Fundamentals",
     description:
-      " Starting with Basic HTML, you learn how to structure web pages using essential tags like headings, paragraphs, links, and images. Moving to Advanced HTML, you explore semantic elements, forms, multimedia embedding, and accessibility enhancements to build richer, more meaningful webpages. In Basic CSS, you gain skills to style these HTML structures—setting colors, fonts, spacing, and simple layouts—while Advanced CSS introduces powerful tools like Flexbox, Grid, animations, and responsive design techniques to create dynamic, adaptable, and polished interfaces. The Flexbox & Responsive Design lesson ties these skills together, teaching you how to build flexible layouts that adjust seamlessly across devices using modern CSS features and media queries. Together, these lessons provide a strong foundation to design and develop functional, attractive, and user-friendly websites that meet today’s web standards.",
-    videoUrl: "",
+      "Tổng hợp kiến thức từ HTML, CSS đến Flexbox & responsive design. Học viên nắm vững nền tảng để xây dựng website hoàn chỉnh và sẵn sàng bước sang JavaScript hoặc framework.",
+    videoUrl: "https://youtu.be/5YDVJaItmaY?si=bVWvyc86EVk4TJwk",
+    content: [
+      "Recap of HTML fundamentals: structure, semantic elements, and forms",
+      "Review of CSS essentials: styling, layouts, and advanced techniques",
+      "Understanding how Flexbox simplifies complex designs",
+      "Key principles of responsive design for multi-device compatibility",
+      "How HTML and CSS combine to create complete, user-friendly websites",
+      "Next steps in the journey: JavaScript, frameworks, and project building",
+    ],
   },
 ];
 
@@ -86,7 +101,7 @@ export const intermediate: IData[] = [
     title: "Lesson 6: JavaScript Basics",
     description:
       "In this lesson, you will be introduced to JavaScript, the programming language that adds interactivity and dynamic behavior to web pages. You’ll learn how to write and run simple scripts that respond to user actions and manipulate page content.",
-    videoUrl: "",
+    videoUrl: "https://youtu.be/DHjqpvDnNGE?si=rz07OhA_PjXJyqzB",
     content: [
       "What is JavaScript and how it works with HTML and CSS",
       "Embedding JavaScript in web pages: inline, internal, and external scripts",
@@ -106,7 +121,7 @@ export const intermediate: IData[] = [
     title: "Lesson 7: Functions, Arrays, and Objects",
     description:
       "In this lesson, you will deepen your understanding of JavaScript by learning about key programming concepts that enable you to write more organized and efficient code. You’ll explore how to use functions to encapsulate reusable logic, manage collections of data with arrays, and structure complex data using objects.",
-    videoUrl: "",
+    videoUrl: "https://youtu.be/yQ1fz8LY354?si=NqwmNMDQrY82h3C4",
     content: [
       "Defining and invoking functions, including parameters and return values",
       "Understanding function scope and hoisting",
@@ -124,7 +139,7 @@ export const intermediate: IData[] = [
     title: "Lesson 8: DOM Manipulation & Events",
     description:
       "In this lesson, you’ll learn how to make your web pages truly interactive by using JavaScript to manipulate the Document Object Model (DOM) and respond to user events. You’ll gain hands-on experience selecting, modifying, and creating HTML elements dynamically, as well as handling events like clicks, key presses, and more.",
-    videoUrl: "",
+    videoUrl: "https://youtu.be/y17RuWkWdn8?si=QDvJZ0XAHqdvueuI",
     content: [
       "Understanding the DOM structure and how JavaScript interacts with it",
       "Selecting DOM elements using methods like getElementById, querySelector, and get ElementsByClassName",
@@ -142,7 +157,7 @@ export const intermediate: IData[] = [
     title: "Lesson 9: Advanced JavaScript",
     description:
       "This lesson takes your JavaScript skills to the next level by introducing advanced concepts and techniques that allow you to write more efficient, maintainable, and powerful code. You’ll explore modern JavaScript features and best practices used in real-world web development.",
-    videoUrl: "",
+    videoUrl: "https://youtu.be/R9I85RhI7Cg?si=JvzEB-zmFvzVy7TJ",
     content: [
       "ES6+ features: arrow functions, template literals, destructuring, spread/rest operators",
       "Working with asynchronous JavaScript: callbacks, Promises, and async/await",
@@ -160,7 +175,8 @@ export const intermediate: IData[] = [
     image: require("../assets/tech10.png"),
     title: "Lesson 10: Overall Summary: JavaScript",
     description:
-      "Starting with Lesson 6: JavaScript Basics, you learn the foundational programming concepts including variables, data types, functions, conditionals, loops, and how to embed JavaScript into web pages to create interactivity. In Lesson 7: Functions, Arrays, and Objects, you expand your skills by mastering reusable functions, working with arrays to handle lists of data, and using objects to model complex data structures—key to writing organized and maintainable code. Lesson 8: DOM Manipulation & Events focuses on dynamically interacting with web pages. You’ll learn how to select, modify, and create HTML elements, as well as handle user events like clicks and key presses, making your sites responsive and interactive. Finally, Lesson 9: Advanced JavaScript introduces modern language features such as ES6+ syntax (arrow functions, destructuring), asynchronous programming with Promises and async/await, closures, prototypes, and modules. These concepts prepare you to write clean, efficient, and scalable JavaScript code suitable for real-world applications.",
+      "Starting wih Lesson 6: JavaScript Basics, you learn the foundational programming concepts including variables, data types, functions, conditionals, loops, and how to embed JavaScript into web pages to create interactivity. In Lesson 7: Functions, Arrays, and Objects, you expand your skills by mastering reusable functions, working with arrays to handle lists of data, and using objects to model complex data structures—key to writing organized and maintainable code. Lesson 8: DOM Manipulation & Events focuses on dynamically interacting with web pages. You’ll learn how to select, modify, and create HTML elements, as well as handle user events like clicks and key presses, making your sites responsive and interactive. Finally, Lesson 9: Advanced JavaScript introduces modern language features such as ES6+ syntax (arrow functions, destructuring), asynchronous programming with Promises and async/await, closures, prototypes, and modules. These concepts prepare you to write clean, efficient, and scalable JavaScript code suitable for real-world applications.",
+    videoUrl: "https://youtu.be/lkIFF4maKMU?si=DIOXO9Dnd-Eezf-r",
   },
 ];
 export const advanced: IData[] = [
@@ -170,7 +186,7 @@ export const advanced: IData[] = [
     title: "Lesson 11: Fetching Data from APIs",
     description:
       "In this lesson, you will learn how to use JavaScript to retrieve and work with data from external sources through APIs (Application Programming Interfaces). You’ll discover how to make network requests, handle asynchronous data, and dynamically update web pages with real-time information.",
-    videoUrl: "",
+    videoUrl: "https://youtu.be/cuEtnrL9-H0?si=oX4q8uLr2cYSMfYe",
     content: [
       "What APIs are and how they work",
       "Using the fetch API to make HTTP requests",
@@ -188,7 +204,7 @@ export const advanced: IData[] = [
     title: "Lesson 12: Form Handling & Validation",
     description:
       "In this lesson, you’ll learn how to create interactive and user-friendly web forms using JavaScript. You’ll explore techniques to capture user input, validate data before submission, and provide feedback to ensure accuracy and improve user experience.",
-    videoUrl: "",
+    videoUrl: "https://youtu.be/In0nB0ABaUk?si=EFdolpHIMkA9x81c",
     content: [
       "Understanding HTML forms and form elements",
       "Accessing form data using JavaScript",
@@ -207,7 +223,7 @@ export const advanced: IData[] = [
     title: "Lesson 13: Deploying Your Website",
     description:
       "In this lesson, you will learn how to take your completed website live on the internet so that others can access it. You’ll explore different hosting options and understand the steps involved in deploying a website efficiently and securely.",
-    videoUrl: "",
+    videoUrl: "https://youtu.be/9srnyNC1e_o?si=w510RdfuCay4VjO_",
     content: [
       "Overview of web hosting and domain names",
       "Choosing a hosting provider: shared hosting, cloud services, and static site hosts",
@@ -225,6 +241,7 @@ export const advanced: IData[] = [
     title: "Lesson 14: Project: Personal Portfolio Website",
     description:
       "Create a responsive personal portfolio website that showcases your name, a short bio, your skills, and links to your social media or projects. The site will include:",
+    videoUrl: "https://youtu.be/ifOJ0R5UQOc?si=XTQSubGRV9-y-_KV",
     content: [
       "A clean homepage with your name and bio",
       "A skills section displayed using Flexbox",
