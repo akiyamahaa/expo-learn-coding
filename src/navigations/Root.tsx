@@ -58,7 +58,6 @@ const Root = () => {
             options={{
               headerShown: true,
               title: "Bài trắc nghiệm",
-              headerBackTitleVisible: false,
               headerStyle: {
                 backgroundColor: colors.white,
               },
@@ -74,7 +73,6 @@ const Root = () => {
             options={{
               headerShown: true,
               title: "Bài thực hành",
-              headerBackTitleVisible: false,
               headerStyle: {
                 backgroundColor: colors.white,
               },
