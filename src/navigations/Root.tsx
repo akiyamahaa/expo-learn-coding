@@ -42,7 +42,6 @@ const Root = () => {
             options={{
               headerShown: true,
               title: "Kết quả trắc nghiệm",
-              headerBackTitleVisible: false,
               headerStyle: {
                 backgroundColor: colors.white,
               },

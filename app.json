@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "expo-template",
-    "slug": "expo-template",
+    "name": "expo-codehub",
+    "slug": "expo-codehub",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -22,18 +22,19 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.quangakiyama.expotemplate"
+      "package": "com.quangakiyama.codehub"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "extra": {
-      "eas": {
-        "projectId": "44fc26b5-7003-4ef0-baaf-166c61209456"
-      }
-    },
     "plugins": [
       "expo-font"
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "f8cf3c65-cd56-42ee-b3d1-f3203382a2cf"
+      }
+    },
+    "owner": "quangakiyama"
   }
 }
