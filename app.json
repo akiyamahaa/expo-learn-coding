@@ -1,21 +1,22 @@
 {
   "expo": {
-    "name": "expo-codehub",
-    "slug": "expo-codehub",
+    "name": "Code Hub",
+    "slug": "codehub",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "resizeMode": "cover",
+      "backgroundColor": "#2FB3FF"
     },
     "assetBundlePatterns": [
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.quangakiyama.codehub"
     },
     "android": {
       "adaptiveIcon": {

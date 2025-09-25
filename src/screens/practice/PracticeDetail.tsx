@@ -59,7 +59,7 @@ export default function PracticeDetail() {
       {/* HEADER */}
       <Box position="relative" height={HEADER_HEIGHT}>
         <Image
-          source={{ uri: image }}
+          source={image}
           style={{ width, height: HEADER_HEIGHT }}
           resizeMode="cover"
           alt="image"
@@ -83,7 +83,7 @@ export default function PracticeDetail() {
           color="#fff"
           style={styles.title}
         >
-          Bài tập {index + 1}: {title}
+          {title}
         </Text>
       </Box>
 

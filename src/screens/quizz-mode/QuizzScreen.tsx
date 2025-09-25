@@ -8,7 +8,6 @@ import LottieView from "lottie-react-native";
 import { quizzData } from "../../db/quizz";
 import { getRandomArray } from "../../utils/function";
 
-const { width } = Dimensions.get("screen");
 const PROGRESS_HEIGHT = 8;
 
 const levelLabels: Record<string, string> = {

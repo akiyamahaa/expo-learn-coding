@@ -10,7 +10,7 @@ import { excercises, Exercise } from "../../db/practice";
 
 const { width } = Dimensions.get("screen");
 const GAP = 16;
-const CARD_WIDTH = width - GAP * 3;
+const CARD_WIDTH = width - GAP * 2;
 
 type PracticeCardProps = Exercise & { index: number };
 
@@ -51,9 +51,14 @@ function PracticeCard({
           bg="$white"
         >
           {/* image */}
-          <Box style={{ width: CARD_WIDTH, aspectRatio: 16 / 9 }}>
+          <Box
+            style={{
+              width: CARD_WIDTH,
+              aspectRatio: 16 / 9,
+            }}
+          >
             <Image
-              source={{ uri: image as string }}
+              source={image}
               style={styles.image}
               resizeMode="cover"
               alt="image"

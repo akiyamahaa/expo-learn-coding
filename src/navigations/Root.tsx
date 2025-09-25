@@ -41,6 +41,7 @@ const Root = () => {
             component={QuizzResult}
             options={{
               headerShown: true,
+              headerBackVisible: false,
               title: "Kết quả trắc nghiệm",
               headerStyle: {
                 backgroundColor: colors.white,
@@ -56,6 +57,7 @@ const Root = () => {
             component={QuizzScreen}
             options={{
               headerShown: true,
+              headerBackVisible: false,
               title: "Bài trắc nghiệm",
               headerStyle: {
                 backgroundColor: colors.white,
