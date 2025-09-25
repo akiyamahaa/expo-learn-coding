@@ -11,9 +11,9 @@ import { getRandomArray } from "../../utils/function";
 const PROGRESS_HEIGHT = 8;
 
 const levelLabels: Record<string, string> = {
-  easy: "Dễ",
-  medium: "Trung bình",
-  hard: "Khó",
+  easy: "Easy",
+  medium: "Medium",
+  hard: "Hard",
 };
 
 export default function QuizzScreen() {
@@ -30,7 +30,7 @@ export default function QuizzScreen() {
 
   useLayoutEffect(() => {
     navigation.setOptions({
-      title: `Quiz mức độ ${levelLabels[level]}`,
+      title: `Quiz Level: ${levelLabels[level]}`,
       headerStyle: { backgroundColor: "#FFD76E" },
       headerTintColor: "#333",
     });
@@ -44,7 +44,7 @@ export default function QuizzScreen() {
       newStatus[i] = 1;
       setScore((s) => s + 1);
       setShowConfetti(true);
-      // tắt confetti sau 1.5s
+      // turn off confetti after 1.5s
       setTimeout(() => setShowConfetti(false), 1500);
     } else {
       newStatus[i] = 0;
@@ -77,7 +77,7 @@ export default function QuizzScreen() {
 
   return (
     <Box flex={1} bg="$gray100">
-      {/* Confetti khi trả lời đúng */}
+      {/* Confetti animation when answering correctly */}
       <AnimatePresence>
         {showConfetti && (
           <MotiView
@@ -102,7 +102,7 @@ export default function QuizzScreen() {
         <Box px="$4" pt="$4">
           <HStack alignItems="center">
             <Text fontSize="$md" fontWeight="$semibold">
-              Câu {curr + 1}/{quizzes.length}
+              Question {curr + 1}/{quizzes.length}
             </Text>
             <Box
               flex={1}
@@ -124,17 +124,17 @@ export default function QuizzScreen() {
           </HStack>
         </Box>
 
-        {/* Câu hỏi */}
+        {/* Question */}
         <Box mt="$6" px="$4">
           <Text fontSize="$lg" fontWeight="$bold" textAlign="center">
             {quizzes[curr].ques}
           </Text>
         </Box>
 
-        {/* Các lựa chọn */}
+        {/* Answer options */}
         <VStack space="xl" px="$4" mt="$4">
           {quizzes[curr].choose.map((opt: string, i: number) => {
-            // Xác định background và border
+            // Determine background and border
             let bg = "$white";
             let border = "$primary500";
             if (answered) {
@@ -146,7 +146,7 @@ export default function QuizzScreen() {
                 border = "$error500";
               }
             }
-            // Chọn hiệu ứng
+            // Select animation effect
             const animateProps: any = {};
             if (status[i] === 1) {
               animateProps.from = { scale: 1 };
@@ -188,7 +188,7 @@ export default function QuizzScreen() {
         </VStack>
       </ScrollView>
 
-      {/* Nút Tiếp theo / Hoàn thành */}
+      {/* Next / Finish Button */}
       <Box position="absolute" bottom={32} left={16} right={16}>
         <Button
           size="lg"
@@ -198,7 +198,7 @@ export default function QuizzScreen() {
           opacity={answered ? 1 : 0.5}
         >
           <Text color="$white" fontWeight="$semibold">
-            {curr === quizzes.length - 1 ? "Hoàn thành" : "Tiếp theo"}
+            {curr === quizzes.length - 1 ? "Finish" : "Next"}
           </Text>
         </Button>
       </Box>

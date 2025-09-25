@@ -19,35 +19,35 @@ enum EResultType {
 
 const RETURN_CFG = {
   [EResultType.GOOD]: {
-    title: "Bạn thật tuyệt vời! 🎉",
-    subtitle: "Bạn đã hoàn thành xuất sắc!",
+    title: "You are amazing! 🎉",
+    subtitle: "You have completed it successfully!",
     gradient: ["#FFD54F", "#FFB300"],
     animation: require("../../assets/animations/trophy.json"),
     starColor: "#FFC107",
     messages: [
-      "Tuyệt vời, bạn thật siêu! 🚀",
-      "Xuất sắc! Tiếp tục phát huy nhé! 🌟",
-      "Bạn làm rất tốt, giữ vững phong độ! 👍",
+      "Awesome, you’re a star! 🚀",
+      "Excellent! Keep it up! 🌟",
+      "Great job, stay consistent! 👍",
     ],
   },
   [EResultType.BAD]: {
-    title: "Ôi không! 😢",
-    subtitle: "Bạn hãy thử lại lần nữa nhé",
+    title: "Oh no! 😢",
+    subtitle: "Try again next time!",
     gradient: ["#EF9A9A", "#E57373"],
     animation: require("../../assets/animations/sad.json"),
     starColor: "#B0BEC5",
     messages: [
-      "Đừng nản lòng, lần sau cố gắng hơn nhé! 💪",
-      "Bạn đã cố gắng rất tốt, hãy luyện tập thêm! 📚",
-      "Mỗi thất bại là một bước tiến tới thành công! 🌱",
+      "Don’t give up, try harder next time! 💪",
+      "You did your best, keep practicing! 📚",
+      "Every failure is a step toward success! 🌱",
     ],
   },
 };
 
 const LEVEL_LABEL: Record<string, string> = {
-  easy: "Dễ",
-  medium: "Trung bình",
-  hard: "Khó",
+  easy: "Easy",
+  medium: "Medium",
+  hard: "Hard",
 };
 
 export default function QuizzResult() {
@@ -56,7 +56,7 @@ export default function QuizzResult() {
   const type = score / total >= 0.5 ? EResultType.GOOD : EResultType.BAD;
   const cfg = RETURN_CFG[type];
 
-  // Random lời khích lệ
+  // Random encouragement message
   const [encourage] = useState(() => {
     const arr = cfg.messages;
     return arr[Math.floor(Math.random() * arr.length)];
@@ -75,7 +75,7 @@ export default function QuizzResult() {
       end={[1, 1]}
       style={styles.container}
     >
-      {/* Nền animation */}
+      {/* Background animation */}
       <LottieView
         source={cfg.animation}
         autoPlay
@@ -108,7 +108,7 @@ export default function QuizzResult() {
           </Box>
         </MotiView>
 
-        {/* Tiêu đề */}
+        {/* Title */}
         <Text
           fontSize="$3xl"
           fontWeight="$bold"
@@ -118,10 +118,10 @@ export default function QuizzResult() {
         >
           {cfg.title}
         </Text>
-        {/* Hiển thị level */}
+        {/* Show level */}
         <Box bg="rgba(255,255,255,0.3)" px="$4" py="$1" rounded="$full" mt="$2">
           <Text fontSize="$md" fontWeight="$semibold" color="#fff">
-            Mức độ: {LEVEL_LABEL[level] || level}
+            Level: {LEVEL_LABEL[level] || level}
           </Text>
         </Box>
         {/* Subtitle */}
@@ -129,7 +129,7 @@ export default function QuizzResult() {
           {cfg.subtitle}
         </Text>
 
-        {/* Lời động viên */}
+        {/* Encouragement */}
         <Text
           fontSize="$lg"
           fontWeight="$semibold"
@@ -140,7 +140,7 @@ export default function QuizzResult() {
           {encourage}
         </Text>
 
-        {/* Điểm số */}
+        {/* Score */}
         <MotiView
           from={{ scale: 0.8 }}
           animate={{ scale: [1, 1.1, 1] }}
@@ -161,7 +161,7 @@ export default function QuizzResult() {
           </Text>
         </MotiView>
 
-        {/* Sao đánh giá */}
+        {/* Stars */}
         <HStack mt="$4">
           {[...Array(5)].map((_, i) => (
             <FontAwesome
@@ -186,7 +186,7 @@ export default function QuizzResult() {
             style={styles.buttonShadow}
           >
             <Text fontSize="$lg" fontWeight="$semibold" color={cfg.gradient[0]}>
-              Làm lại Quiz
+              Retry Quiz
             </Text>
           </Box>
         </TouchableOpacity>
@@ -199,7 +199,7 @@ export default function QuizzResult() {
             style={styles.buttonShadow}
           >
             <Text fontSize="$lg" fontWeight="$semibold" color={cfg.gradient[0]}>
-              Về Trang Chủ
+              Back to Home
             </Text>
           </Box>
         </TouchableOpacity>
